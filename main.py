@@ -1,4 +1,7 @@
+import os
 import sys
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QPixmap
 import PyQt5.QtWidgets
 import PyQt5.uic
 from calc_imc import calcular_imc, classificar_imc, peso_ideal
@@ -18,7 +21,6 @@ class IMC(PyQt5.QtWidgets.QDialog):
  
             imc = calcular_imc(peso, altura)
             classificacao = classificar_imc(imc)
- 
             peso_min, peso_max = peso_ideal(altura)
  
             self.lblResultado.setText(
@@ -28,10 +30,22 @@ class IMC(PyQt5.QtWidgets.QDialog):
                 f"{peso_min:.1f} kg e {peso_max:.1f} kg."
             )
  
+            caminho_img = self.get_classification_image(classificacao)
+            if caminho_img:
+                pixmap = QPixmap(caminho_img)
+                if not pixmap.isNull():
+                    pixmap = pixmap.scaledToWidth(220, Qt.SmoothTransformation)
+                    self.lblImagem.setPixmap(pixmap)
+                else:
+                    self.lblImagem.clear()
+            else:
+                self.lblImagem.clear()
+ 
         except ValueError:
             self.lblResultado.setText(
                 "Caracteres inválidos. Use somente números."
             )
+            self.lblImagem.clear()
  
     def getPeso(self):
         peso = self.txtPeso.text()
@@ -50,6 +64,19 @@ class IMC(PyQt5.QtWidgets.QDialog):
         if altura >= 100:
             altura = altura / 100
         return altura
+
+    def get_classification_image(self, classificacao):
+        imagens = {
+            "Abaixo do peso": "images/abaixo.png",
+            "Peso normal": "images/normal.png",
+            "Sobrepeso": "images/sobrepeso.png",
+            "Obesidade": "images/obeso.png",
+        }
+        nome = imagens.get(classificacao)
+        if not nome:
+            return None
+        caminho = os.path.join(os.path.dirname(os.path.abspath(__file__)), nome)
+        return caminho if os.path.isfile(caminho) else None
  
 if __name__ == "__main__":
     app = PyQt5.QtWidgets.QApplication(sys.argv)
