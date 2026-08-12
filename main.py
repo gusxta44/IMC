@@ -22,11 +22,11 @@ class IMC(PyQt5.QtWidgets.QDialog):
             imc = calcular_imc(peso, altura)
             classificacao = classificar_imc(imc)
             peso_min, peso_max = peso_ideal(altura)
- 
+            
             self.lblResultado.setText(
                 f"IMC: {imc:.2f}\n"
                 f"{classificacao}\n\n"
-                f"Seu peso ideal deveria estar entre "
+                f"Seu peso ideal deve estar entre "
                 f"{peso_min:.1f} kg e {peso_max:.1f} kg."
             )
  
