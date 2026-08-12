@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>655</width>
-    <height>554</height>
+    <width>738</width>
+    <height>616</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -65,6 +65,19 @@ QPushButton:pressed{
    </string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
    <item>
     <widget class="QLabel" name="lblTitulo">
      <property name="text">
@@ -171,28 +184,40 @@ QPushButton:pressed{
         <property name="styleSheet">
          <string notr="true">font-size:16px;
 font-weight:bold;
-color:#27AE60;
+color:#2E86DE;
 padding:12px;
          </string>
         </property>
         <property name="text">
          <string/>
         </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
-      <item>
+      <item alignment="Qt::AlignHCenter">
        <widget class="QLabel" name="lblImagem">
         <property name="minimumSize">
          <size>
-          <width>0</width>
+          <width>160</width>
+          <height>160</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>160</width>
           <height>160</height>
          </size>
         </property>
         <property name="text">
          <string/>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
