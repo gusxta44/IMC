@@ -3,7 +3,6 @@ import PyQt5.QtWidgets
 import PyQt5.uic
 from calc_imc import calcular_imc, classificar_imc, peso_ideal
  
- 
 class IMC(PyQt5.QtWidgets.QDialog):
  
     def __init__(self):
