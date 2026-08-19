@@ -6,11 +6,24 @@ import PyQt5.QtWidgets
 import PyQt5.uic
 from calc_imc import calcular_imc, classificar_imc, peso_ideal
 
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
+class MinhaCalculadora(PyQt5.QtWidgets.QMainWindow):
+    def __init__(self):
+        super().__init__()
+        
+        PyQt5.uic.loadUi(resource_path('imc.ui'), self)
+        
 class IMC(PyQt5.QtWidgets.QDialog):
 
     def __init__(self):
         super().__init__()
-        PyQt5.uic.loadUi("imc.ui", self)
+        PyQt5.uic.loadUi(resource_path("imc.ui"), self)
         self.btnCalcular.clicked.connect(self.calcular)
         self.show()
 
@@ -101,10 +114,9 @@ class IMC(PyQt5.QtWidgets.QDialog):
             return None
 
         escolha = categoria.get(sexo, categoria.get("M"))
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        caminho = os.path.normpath(os.path.join(base_dir, escolha))
-        return caminho if os.path.isfile(caminho) else None
-
+        caminho_final = resource_path(escolha)
+        return caminho_final if os.path.isfile(caminho_final) else None
+    
 if __name__ == "__main__":
     app = PyQt5.QtWidgets.QApplication(sys.argv)
     janela = IMC()
