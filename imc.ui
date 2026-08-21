@@ -6,16 +6,28 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>662</width>
-    <height>611</height>
+    <width>667</width>
+    <height>592</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>667</width>
+    <height>592</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>667</width>
+    <height>592</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Calculadora de IMC</string>
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../Downloads/icone_imc.ico</normaloff>../../Downloads/icone_imc.ico</iconset>
+    <normaloff>images/icone_imc.png</normaloff>images/icone_imc.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">
